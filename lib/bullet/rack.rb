@@ -14,7 +14,7 @@ module Bullet
 
       response_body = nil
       if Bullet.notification?
-        if status == 200 && !response_body(response).frozen? && html_request?(headers, response)
+        if status == 200 && !response_body(response).frozen?
           response_body = response_body(response) << Bullet.gather_inline_notifications
           add_footer_note(response_body) if Bullet.add_footer
           headers['Content-Length'] = response_body.bytesize.to_s
